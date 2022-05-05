@@ -1,0 +1,169 @@
+#container{
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
+    background-color: #192133;
+
+}
+body{
+    background-color: #192133;
+}
+#container>div{
+    /* border: 1px solid black; */
+    margin-left: 70%;
+    display: flex;
+    text-align: right;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;  
+    background-color: #202038;
+}
+#container>div>div{
+    margin: 10px 30px;
+    font-size: 23px;
+    font-weight: bolder;
+    color: white;
+        
+   
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+h1{
+    text-align: center;
+}
+
+/* ..........................login Page css part .....................*/
+#log_div{
+    width: 320px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 60px auto  ;
+   padding: 20px;
+   color: white;
+   box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+#log_div>form>input{
+    display: flex;
+    /* margin: 20px; */
+    width: 220px;
+    height: 32px;
+    margin: 30px auto ;
+    text-align: center;
+    font-size: 17px;
+}
+#log_div>form>input:nth-child(3){
+    width: 120px;
+    height: 40px;
+    background-color: green;
+    color: white;
+}
+
+
+
+/* ......................signup PAge css part........................ */
+#signup_div{
+    width: 400px;
+    height: 450px;
+    border: 1px solid black;
+    margin: 60px auto  ;
+}
+
+
+#sign_div{
+    width: 320px;
+    height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 60px auto  ;
+   padding: 20px;
+   color: white;
+   box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+#sign_div>form>input{
+    display: flex;
+    /* margin: 20px; */
+    width: 220px;
+    height: 28px;
+    margin: 30px auto ;
+    text-align: center;
+    font-size: 17px;
+}
+#sign_div>form>input:nth-child(5){
+    width: 120px;
+    height: 40px;
+    background-color: green;
+    color: white;
+    /* text-align: right; */
+}
+
+#slid_show>img{
+    width: 100%;
+    height: 400px;
+}
+
+/* movie box part.............. */
+#movieDiv{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,150px);
+   
+    
+    grid-gap: 70px 200px;
+    margin: auto;
+    /* height: 700px; */
+    /* border: 1px solid black; */
+}
+#movieDiv>div{
+  
+    box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    background-color: #202038;
+    display: flex;
+    color: white;
+}#movieDiv>div:hover{
+  /* display: flex; */ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#movieDiv>div>div:nth-child(2){
+    margin-left: 20px;
+    width: 55%;
+    /* border: 1px solid rgb(15, 228, 33); */
+   /* font-size: 17px;
+font-weight: bolder; */
+}
+p:nth-child(1){
+    font-size: 20px;
+    font-weight: 700;
+}
+p:nth-child(2){
+    font-size: 15px;
+    /* font-weight: 700; */
+}
+#movieDiv>div>img{
+    width: 40%;
+    height: 100%;
+    
+}
+
+
+#tagImg{
+    width: 15px;
+    height: 15px;
+    margin: 4px 10px;
+}
+#tag_div{
+    display: flex;
+    height: 5px;
+    /* border: 1px solid black; */
+    /* padding: 20px; */
+    font-size: 10px;
+    /* color: blue; */
+font-weight: 200px;
+}
+#tag_div>p{
+    margin-top: 0;
+}
+
+
+
+/* search Box... */
+#SortValue{
+    margin: 20px 1000px ;
+    width: 250px;
+    height: 30px;
+text-align: center;
+}

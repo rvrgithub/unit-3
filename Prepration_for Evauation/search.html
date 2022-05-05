@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+<style>
+  #main{
+            
+            border:1px solid black;
+            display: grid;
+            grid-template-columns: repeat(3,30%);
+            grid-gap: 3%;
+            text-align: center;
+        }
+        #main img{
+          width: 400px;
+          height: 250px;
+        }
+</style>
+  <body>
+    <div id="main">
+      <!-- No need to add sidebar here, directly display search results here only -->
+      
+    </div>
+  </body>
+</html>
+<script type="module">
+//  let  key= https://api.unsplash.com/search/users?page=1&query=nas>; rel="first", 
+  import {makeAPiCall ,appendPicture} from "./scripts/main.js";
+
+  let search_data =localStorage.getItem("search_data")
+  let res = await makeAPiCall(`https://api.unsplash.com/search/photos?query=${search_data}&client_id=Myy1NqkZWnBcqzv2Mq7nHNs0NRgZybo9vozWl9fFiwo`);
+console.log("res",res);
+let parent =document.getElementById("main");
+appendPicture(res.results,parent); 
+
+</script>

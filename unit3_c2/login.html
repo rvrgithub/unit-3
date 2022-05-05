@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+    <input id="email" type="email" placeholder="Enter Your eamil"/>
+    <input id="pass" type="text" placeholder="Enter Your password"/>
+    <input type="submit" value="logIn">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit" ,login);
+    var reg =JSON.parse(localStorage.getItem("Database"))||[];
+    function login(event){
+event.preventDefault();
+var email =document.querySelector("#email").value;
+var pass =document.querySelector("#pass").value;
+
+for(var i=0;i< reg.length ;i++){
+    console.log(reg[i].pass);
+    if(reg[i].email == email && reg[i].pass== pass ){
+        cosole.log("yes");
+        alert("Yes");
+    }
+    else{
+        console.log("No");
+        alert("No");
+    }
+}
+
+
+
+    }
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        display: flex;
+        height: 600px;
+      }
+      #sidebar {
+        flex: 2;
+        border: 1px solid black;
+      }
+      #main {
+        flex: 8;
+        /* border:1px solid black; */
+        display: grid;
+        grid-template-columns: repeat(3, 30%);
+        grid-gap: 5%;
+        text-align: center;
+      }
+      #main img {
+        width: 320px;
+        height: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append top images here only-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  // create ui component and export
+  // import navbar
+  // append
+  // get top images..
+  // done ...
+  import sidebar from "./components/scripts.js";
+  let sidedar_div = document.getElementById("sidebar");
+  sidedar_div.innerHTML = sidebar();
+
+  import { makeAPiCall, appendPicture } from "./scripts/main.js";
+  console.log("appendPicture", appendPicture);
+
+  let image_data = await makeAPiCall(
+    "https://api.unsplash.com/photos/?client_id=Myy1NqkZWnBcqzv2Mq7nHNs0NRgZybo9vozWl9fFiwo"
+  );
+  console.log("image_data", image_data);
+  let parent = document.getElementById("main");
+  console.log("parent", parent);
+  appendPicture(image_data, parent);
+  console.log("hello");
+
+
+  
+  let input_search = document.getElementById("search_bar");
+  input_search.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      // console.log("e",e);
+      let input_value = document.getElementById("search_bar").value;
+      console.log("input_value", input_value);
+      localStorage.setItem("search_data", input_value);
+      window.location.href = "search.html";
+    }
+  });
+</script>
+
+
+
+
+

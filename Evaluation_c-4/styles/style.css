@@ -1,0 +1,22 @@
+#container{
+    display: flex;
+}
+#sidebar{
+    flex: 4;
+}
+
+#main>div{
+    flex: 6;
+    display: flex;
+    margin: 40px;
+    /* grid-gap:5% 5%; */
+    border: 1px solid black;
+}
+#main>div p{
+    border: 1px solid black;
+    width: 30%;
+}
+#main img{
+    width: 50%;
+    height: 60%;
+}

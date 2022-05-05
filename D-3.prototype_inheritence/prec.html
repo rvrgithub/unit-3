@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//  question-1
+//   var a= {aaa:100}
+//   var b =Object.create(a);
+//   var c =Object.create(b);
+//   console.log("c",c.aaa)
+ 
+
+//  question-2
+// function iphone11(){
+//     this.name ="iphone 11";
+// }
+// iphone11.prototype.FaceId =function(){
+//     console.log("scanning face");
+// };
+// var iphone1= new iphone11();
+// iphone1.FaceId();
+
+
+// question_3
+
+// what is this?
+// let arr = new Array();
+// console.log(arr);
+
+// concept:--> 2nd
+// const reebok ={
+//     breand:"Reebok",
+//     type:"shoes",
+//     material:"Lether",
+//     country:"India",
+// }
+// console.log(reebok);
+
+// const addidas = Object.create(reebok);
+// console.log(addidas);
+// console.log(addidas.hasOwnProperty("breand"));
+
+
+// cenceot:--> 3rd
+
+//  mewsPaper  many add can be add this type.....
+//   function Newspaper(h){
+//     this.date =new Date()
+//     this.id=Math.round(Math.random() *10)
+//     this.name ="ramayra.publication"
+// this.headLine =h
+//   }
+//  Newspaper.prototype.add= function(){
+//      console.log("big sell in flipcart");
+//  }
+
+//  let res = new Newspaper("yupp!!!!");
+//  console.log("result", res);
+//  res.add()
+
+
+// cencept 4th
+
+function myArr(){
+Object.defineProperty(this,"length",{
+Writable: true,
+enumerable:false
+})// this property use for hide the length of data in arr///
+
+    for(let i=arguments.length;i>=0; i--){
+        // console.log("i:",arguments[i]);
+        this[i]=arguments[i];
+        this.length=arguments.length;
+    }
+}
+var arr = new myArr("Raju","Shyam","Babubhaiya","totla");
+///push function  push-->add*
+myArr.prototype.add=function(x){
+    let index= this.length
+    this[index]=x
+    this.length++
+}
+
+///split function  -->remove*
+myArr.prototype.remove=function(){
+    let index= this.length-1
+    delete this[index]
+    this.length--
+}
+
+// arr.add("Totla");
+arr.remove();
+
+// console.log("arr:", arr);// this formet data like in object formet..we need to in arr
+console.log("arr:",Object.values(arr));
+</script>

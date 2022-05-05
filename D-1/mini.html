@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+      #container{
+      margin: 40px auto;
+      width: 800px;
+      }
+      button{
+        width: 100px;
+        height: 50px;
+        border: none;
+        margin-left: 10px;
+        font-size: 20px;
+        background-color:rgb(217, 186, 248);
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+      button:hover{
+        background-color:rgb(54, 54, 230);
+      }
+      #object,
+      #Array,
+      #Function,
+      #String,
+      #Number,
+      #null,
+      #undefined {
+        display: none;
+      }
+      ul{
+        /* margin-top: 40px; */
+        font-size: 18px;
+        font-family:'Times New Roman', Times, serif;
+        color: red;
+        background-color:rgb(230, 192, 240)
+      }
+      li{
+        line-height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <button onclick="obj()">Object</button>
+      <button onclick="Array()">Array</button>
+      <button onclick="Function()">Function</button>
+      <button onclick="String()">String</button>
+      <button onclick="Number()">Number</button>
+      <button onclick="Null()">null</button>
+      <button onclick="Undefined()">undefined</button>
+      <div id="object">
+        <ul>
+          <li>
+            The Object class represents one of JavaScript's data types.
+          </li>
+          <li>
+            It is used to store various keyed collections and more complex entities.
+          </li>
+          <li>
+            The Object constructor creates an object wrapper for the given value.
+            <ul>
+              <li>
+  
+                If the value is null or undefined, it will create and return an empty object.
+              
+               </li>
+                <li>  Otherwise, it will return an object of a Type that corresponds to the given value.</li>
+                <li> If the value is an object already, it will return the value.</li>
+          </ul>
+          </li>
+         
+      </div>
+
+      <div id="Array">
+       <ul> <li>
+        The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects.
+      </li>
+      <li>
+        Arrays are list-like objects whose prototype has methods to perform traversal and mutation operations.
+      </li>
+      <li>Neither the length of a JavaScript array nor the types of its elements are fixed. Since an array's length can change at any time, and data can be stored at non-contiguous locations in the array,</li>
+      <li>
+        Arrays cannot use strings as element indexes but must use integers. 
+      </li>
+    <li> this depends on how the programmer chooses to use them. </li></ul>
+      </div>
+
+      <div id="Function">
+       <ul> <li>
+        Every JavaScript function is actually a Function object. This can be
+        seen with the code (function(){}).constructor === Function, which
+        returns true.
+      </li>
+    <li>Instance properties
+      <ul>
+<li>Function.prototype.arguments </li>
+<ul>
+  <li>An array corresponding to the arguments passed to a function. This is deprecated as a property of Function. Use the arguments object (available within the function) instead.</li>
+</ul>
+<li>Function.prototype.caller  </li>
+<ul>
+  <li>Specifies the function that invoked the currently executing function. This property is deprecated, and is only functional for some non-strict functions.</li>
+</ul>
+<li>Function.prototype.displayName  </li>
+<ul>
+  <li>The display name of the function.</li>
+</ul>
+      </ul>
+    </li></ul>
+      </div>
+
+      <div id="String">
+        <ul>
+          <li>
+            The String object is used to represent and manipulate a sequence of
+            characters.
+          </li>
+          <li>
+            Strings can be created as primitives, from string literals, or as
+            objects, using the String() constructor:
+          </li>
+          <li>Strings are useful for holding data that can be represented in text form.</li>
+          <li>String primitives and string objects can be used interchangeably in most situations.</li>
+          <li>String literals can be specified using single or double quotes,</li>
+        </ul>
+      </div>
+
+      <div id="Number">
+      <ul>  <li>
+        Number is a primitive wrapper object used to represent and manipulate
+        numbers like 37 or -9.25
+      </li>
+      <li>
+        The Number constructor contains constants and methods for working with
+        numbers.
+      </li>
+    <li> Values of other types can be converted to numbers using the
+      Number() function.</li>
+    <li>A number literal like 37 in JavaScript code is a floating-point value, not an integer</li>
+    <li>Number may also be expressed in literal forms like 0b101, 0o13, 0x0A. </li>
+  </ul>
+      </div>
+
+      <div id="null">
+       <ul>
+       <li>
+        The value null represents the intentional absence of any object value.
+        It is one of JavaScript's primitive values and is treated as falsy for
+        boolean operations.
+      </li>
+    <li>Every Object is derived from null value, and therefore typeof operator returns object for it:</li>
+    <li>makes an error, and the validity is set, it will fail to submit, even if all of the values are valid, until the message is null</li>
+    <li>bigint boolean null undefined symbol</li></ul>
+      </div>
+
+      <div id="undefined">
+       <ul>
+        <li>
+          The global undefined property represents the primitive value
+          undefined. It is one of JavaScript's primitive types.
+        </li>
+        <li>undefined is a primitive value automatically assigned to variables that have just been declared, or to formal arguments for</li>
+        <li>actual arguments. var x; //create a variable but assign it no value console.log("x's value is", x) //logs "x's value is undefined</li>
+        <li>" Undefined value on Wikipedia JavaScript data types and data structures</li>
+       </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+var count=0;
+  function obj() {
+    var onjArr = document.getElementById("object");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+   
+  }
+  function Array() {
+    var onjArr = document.getElementById("Array");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+  function Function() {
+    var onjArr = document.getElementById("Function");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+
+  function String() {
+    var onjArr = document.getElementById("String");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+
+  function Number() {
+    var onjArr = document.getElementById("Number");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+
+  function Null() {
+    var onjArr = document.getElementById("null");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+  function Undefined() {
+    var onjArr = document.getElementById("undefined");
+    count++;
+    if(count %2==1){
+      onjArr.style.display = "block";
+    }
+    else{
+      onjArr.style.display = "none";
+    }
+  }
+
+
+// 1st ....hosting...
+var name;  ///dicleartion
+
+// 2nd....assignment
+var name = "Masai" 
+
+//  3rd.... reassignemnt
+  name = "school"   
+
+// 4rth ...mutability mean that stablity [chnge or not]
+var str = "Masai School"
+  str[0] ="m"
+
+//5th ...stack-> lifo  --> Last in fisrt come
+
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const Amer={
+    name: "Amer",
+    skill: "Singer",
+    live: "Goa",
+    skillAmer(x,y){
+        console.log(` ${x} ${this.skill}  ${y}`)
+    }
+    }
+    const Akber={
+    name: "Akber",
+    skill: "Chef",
+    live: "Mumbai",
+    skillAkber(x,y){
+        console.log(`${x} ${this.skill} ${y}`)
+    }
+    }
+    
+    const Anthony ={
+    name: "Anthony ",
+    skill: "Magician",
+    live: "Kashmir",
+    skillAnthony(x,y){
+        console.log(` ${x} ${this.skill} ${y}`)
+    }
+    }
+    Amer.skillAmer.call( Anthony,"Amar" ,"Goa" )
+    Akber.skillAkber.call(Amer,"Akber","Mumbai")
+    Anthony.skillAnthony.call(Akber,"Anthony" ,"Kashmir")
+</script>

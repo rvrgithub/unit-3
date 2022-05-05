@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/nav.css" />
+  </head>
+  <body>
+    <div id="videoContainer">
+      <div id="mainVideo"></div>
+     
+        <div id="side_data"></div>
+     
+    </div>
+  </body>
+</html>
+<!-- <script type="module" src="index.js"></script> -->
+<script>
+  let mainVideo = document.getElementById("mainVideo");
+  console.log("data ");
+  // let vedioId=JSON.parse(localStorage.getItem("clickData"))
+  let { snippet, videoId } = JSON.parse(localStorage.getItem("clickData"));
+  //  console.log("videoId",snippet);
+  //  console.log("videoId",videoId);
+  let div = document.createElement("div");
+  let title1 = document.createElement("p");
+  let description1 = document.createElement("p");
+  let channelTitle = document.createElement("p");
+  title1.innerHTML = snippet.title;
+  description1.innerHTML = snippet.description;
+  channelTitle.innerHTML = snippet.channelTitle;
+  let iframe1 = document.createElement("iframe");
+  iframe1.src = `https://www.youtube.com/embed/${videoId}`;
+  iframe1.setAttribute("allowfullscreen", "true");
+  iframe1.width = "95%";
+  iframe1.height = "450px";
+  div.append(iframe1);
+  mainVideo.append(div, title1, description1,channelTitle);
+
+  let Api_key = `AIzaSyBtQLFfjYJ2psE8v72uFYOvr63AJKprlrQ`;
+  let userInput = snippet.channelTitle;
+  // console.log("userInput",userInput )
+
+  const Button = async () => {
+    try {
+      let userInput = snippet.channelTitle;
+      // console.log("userInput",userInput )
+      // let userInput = document.getElementById("serchItem").value;
+      console.log(userInput);
+      let res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?key=${Api_key}&q=${userInput}$type=video&maxResults=25&part=snippet`
+      );
+      let data = await res.json();
+      // console.log(data);
+      let videoData = data.items;
+
+      console.log("dattttta", videoData);
+      VedioData(videoData);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  Button();
+// .............................right sidePart...................................
+  let side_data = document.getElementById("side_data");
+  function VedioData(videoData) {
+    videoData.forEach((element) => {
+      console.log("videoData", videoData);
+      let div = document.createElement("div");
+     let div2=document.createElement("div");
+     let div3=document.createElement("div");
+      div2.setAttribute("id",div2)
+      let iframe1 = document.createElement("iframe");
+      iframe1.src = `https://www.youtube.com/embed/${element.id.videoId}`;
+      iframe1.setAttribute("allowfullscreen", "true");
+  iframe1.width = "230px";
+  iframe1.height = "100%";
+      let title1 = document.createElement("p");
+      let channelTitle = document.createElement("p");
+      title1.innerHTML = element.snippet.title;
+      channelTitle.innerHTML = element.snippet.channelTitle;
+      div.append(iframe1);
+      div2.append( title1, channelTitle)
+      div3.append(div,div2)
+      side_data.append(div3);
+    });
+  }
+  VedioData();
+</script>

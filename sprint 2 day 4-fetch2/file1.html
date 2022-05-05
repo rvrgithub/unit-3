@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background:url("https://media.kidadl.com/604073f00add48b894cba7e9-quotes-of-a-rainy-day-can-be-gloomy.jpeg.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* overflow: hidden; */
+        /* height: 100px; */
+      }
+        .mapouter {
+          position: relative;
+          text-align: right;
+          height: 450px;
+          width: 450px;
+          margin-left: 150px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }</style
+      ><a href="https://www.embedgooglemap.net">wordpress add google map</a
+      ><style>
+        .gmap_canvas {
+          overflow: hidden;
+          background: none !important;
+          height: 100%;
+          width: 100%;
+        }
+        #container{
+          width: 300px;
+          height: 270px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          text-align: center;
+          margin-left: 250px;
+          color: rgb(255, 14, 6);
+          background:url("https://scied.ucar.edu/sites/default/files/media/images/weather_0.jpg");
+          /* background:url("https://media.kidadl.com/604073f00add48b894cba7e9-quotes-of-a-rainy-day-can-be-gloomy.jpeg.webp"); */
+        }
+        #flex{
+          display: flex;
+        }
+        #city{
+          width: 300px;
+          height: 30px;
+        margin-left: 250px;
+        margin-bottom: 50px;
+          background:url("https://scied.ucar.edu/sites/default/files/media/images/weather_0.jpg");
+        }
+        li{
+          margin: 12px;
+        }
+      </style>
+  </head>
+  <body>
+    <input type="text" id="city" />
+    <button onclick="getWetherData()">Search</button>
+    <div id="flex">
+    <div id="container"></div>
+
+    <div class="mapouter">
+      <div class="gmap_canvas">
+        <iframe
+          width="400"
+          height="400"
+          id="gmap_canvas"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe
+        ><a href="https://www.whatismyip-address.com"></a><br />
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
+<script>
+  let container = document.getElementById("container");
+  let iframe =document.getElementById("gmap_canvas");
+  let key = "07f6e8c0dff0d9d6260082aee791ec34";
+  async function getWetherData() {
+    try {
+      let city = document.getElementById("city").value;
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
+      );
+      let data = await res.json();
+      console.log(data.coord);
+      console.log(data.coord.lon);
+      console.log(data.coord.lan);
+      console.log("data", data);
+      showWtherData(data);
+    } catch (err) {
+      console.log("err:", err);
+    }
+  }
+  // getWetherData();
+  function showWtherData(d) {
+    container.innerHTML = "";
+    console.log("d", d);
+    let div = document.createElement("div");
+    let name = document.createElement("li");
+    name.innerText = `Name - ${d.name}`;
+    let temp = document.createElement("li");
+    temp.innerText = `Temp - ${d.main.temp} 	\xB0 C`;
+    let humidity = document.createElement("li");
+    humidity.innerText = `Humidity - ${d.main.humidity}`;
+    let pressure = document.createElement("li");
+    pressure.innerText = `Pressure - ${d.main.pressure}`;
+    let max_temp =document.createElement("li");
+    max_temp.innerText=`Max-Temp - ${d.main.temp_max} 	\xB0 C`;
+    let min_temp =document.createElement("li");
+min_temp.innerHTML=`Min_Temp - ${d.main.temp_min} \xB0C`;
+    let sunset =document.createElement("li");
+sunset.innerHTML=`Sunset - ${window.moment(d.sys.sunrise).format("HH:mm a")}`;
+    let suneast =document.createElement("li");
+    suneast.innerHTML=`Suneast- ${window.moment(d.sys.sunset).format("HH:mm a")}`;
+    let wind =document.createElement("li");
+iframe.src=`https://maps.google.com/maps?q=${d.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    container.append(name, temp, humidity, pressure,min_temp,max_temp,sunset,suneast);
+    // console.log("container", container);
+    // container.append(div);
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="city"> 
+    <button onclick="getWetherData()">search</button>
+</body>
+</html>
+<script>
+let key ="07f6e8c0dff0d9d6260082aee791ec34";
+ async function getWetherData(){
+    let city = document.getElementById("city").value;
+    let res= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
+    // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
+    let data = await res.json();
+    console.log("data",data)
+    
+     var lon =data.coord.lon;
+    var lat = data.coord.lat;
+    wetherData(lon ,lat)
+}
+// getWetherData();
+
+ async function wetherData(lon, lat){
+console.log("lonnnnn", lon,lat);
+let data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${key}`);
+var res =await data.json();
+console.log(res)
+}
+ -->
+
+
+
+
+
+
+<!-- </script> -->

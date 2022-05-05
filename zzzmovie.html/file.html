@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="./styles/nav.css">
+  <body>
+   <div id="nav_container"></div>
+   <a href="trand.html"> ........ Click For Tranding Movies......</a>
+  <div id="search_contianer">
+    <input oninput="debounce(main, 1000)" type="text" id="query">
+<div id="flex">
+<div id="screan">
+
+</div>
+
+  <div id="movies"></div>
+</div>
+</div>
+
+
+  </body>
+
+</html>
+
+<script type="module" src="index.js">
+  
+</script>
+<script>
+  async function searchMovie(){
+try{
+    let movie = document.getElementById("query").value;
+let res=  await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=ea08e62e&s=${movie}&eventType=upcoming`);
+let data = await res.json()
+
+
+// for(var i=0;i<data.length ;i++){
+//     data[i].rating =(Math.random()*11).toFixed(2);
+// }
+
+JSON.parse(localStorage.getItem(movies_div))
+localStorage.setItem("movies_div" ,JSON.stringify(data))||[];
+console.log("Maindata", data);
+
+
+return data.Search;
+}catch(err){
+    console.log("err" ,err);
+}
+}
+
+
+async function main(){
+    let data = await searchMovie();
+    console.log("daaaaata",data);
+    if(data === undefined){
+        return false;
+    }
+    console.log("datta",data);
+ 
+    appendData(data);
+}
+main()
+// let trand =document.getElementById("trand");
+let movies_div =document.getElementById("movies");
+function appendData(movies){
+    
+    movies_div.innerHTML=null;
+    movies.forEach(function(el){
+        let div1 =document.createElement("div");
+        let div2 =document.createElement("div");
+        let div3= document.createElement("div");
+        let img =document.createElement("img");
+        let  year =document.createElement("p");
+        let p =document.createElement("P");
+        p.innerText =el.Title;
+        year.innerHTML =el.Year;
+        img.src=el.Poster;  
+         div1.append(img);
+        div2.append(p,year);
+        div3.append(div1 ,div2)
+        // trand.append(div3);
+        movies_div.append(div3);
+      
+        div3.onclick=function(event){
+            addToscren(el)
+            // console.log("el",el);
+        }
+            
+    
+       });
+}
+let timerId;
+
+function debounce(func, delay){
+    if(timerId){
+        clearTimeout(timerId);
+    }
+   timerId = setTimeout(function (){
+        func();
+    },delay)
+}
+
+// if(data==""){
+//     console.log("err");
+//     document.getElementById("screan").style="none";
+//         }
+//         else{
+//     console.log("serach_data",data);
+//     document.getElementById("screan").style="block";
+//         }
+
+let screan =document.getElementById("screan");
+
+function addToscren(el){
+    screan.innerHTML="";
+    console.log("el",el);
+    let div1 =document.createElement("div");
+    let div2 =document.createElement("div");
+    let div3= document.createElement("div");
+    let img =document.createElement("img");
+    let  year =document.createElement("p");
+    let p =document.createElement("P");
+    let series =document.createElement("p");
+    let rating= document.createElement("p");
+    rating.innerText=`Rating:- ${(Math.random()*10).toFixed(1)}`;
+    p.innerText =`Title:-  ${el.Title}`;
+    series.innerText =`Type:-  ${el.Type}`;
+    year.innerHTML =`Year:-  ${el.Year}`;
+    img.src=el.Poster;  
+     div1.append(img);
+    div2.append(p,year,series,rating);
+    screan.append(div1 ,div2)
+    // .append(div3);
+
+}
+
+
+
+</script>
+
+
+
+
+
+

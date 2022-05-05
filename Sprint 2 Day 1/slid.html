@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1 id="count"> count</h1>
+    <input type="text" id="url" />
+    <button onclick="storeImages()">Submit Image</button> 
+    <button onclick="createSlideshow()">Create Slideshow</button> 
+    <img />
+  </body>
+</html>
+<script>
+  // function storeImages(){
+  //     let img =document.getElementById(`url`).value;
+  //     let image =localStorage.getItem(`image`);
+  //     console.log(image)
+  //     console.log(`image:`, image);
+  //     if(image === null){
+  //         image =[];
+  //     }
+
+  //     // there data is allready in localstorage
+  //     else{
+  //         image = JSON.parse(localStorage.getItem(`image`));
+  //     }
+  //     image.push(img);
+  //     localStorage.setItem(`image`,JSON.stringify(image));
+  // }
+
+
+
+
+
+  var imgObj = [
+    {
+      imgUrl: "https://i.ytimg.com/vi/0n7llXgSn4U/maxresdefault.jpg",
+    },
+    {
+      imgUrl:
+        "https://sm.ign.com/t/ign_in/gallery/s/spider-man/spider-man-far-from-home-official-movie-posters_epch.1080.jpg",
+    },
+    {
+      imgUrl:
+        "https://i.pinimg.com/736x/d1/3a/d5/d13ad50397ecbb4144d6a714846d0415.jpg",
+    },
+    {
+      imgUrl:
+        "https://c8.alamy.com/comp/PXNB40/matrix-original-movie-poster-PXNB40.jpg",
+    },
+  ];
+
+  // imgObj = JSON.parse(localStorage.getItem("image")) ;
+  // localStorage.setItem("image", JSON.stringify(imgObj));
+  var arr = JSON.parse(localStorage.getItem("arr")) ||[];
+
+
+  // console.log("arr", arr);
+  function display(imgObj) {
+    imgObj.map(function (el) {
+      let img = document.createElement("img");
+      img.src = el.imgUrl;
+      console.log(el.imgUrl);
+    });
+    
+  }
+  arr.push(imgObj);
+    console.log("arr", arr);
+    localStorage.setItem("arr", JSON.stringify(arr));
+  // display(imgObj);
+</script>

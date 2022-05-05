@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container > img {
+        width: 100%;
+        height: 250px;
+      }
+      #food {
+        width: 100%;
+display: flex;
+
+      }
+      select{
+        text-align: center;
+        background-color:rgb(119, 17, 119);
+        color:aliceblue;
+        margin:  0 10px;
+      }
+      button {
+        width: 100px;
+        height: 40px;
+        margin: 5px;
+      }
+      select {
+        width: 150px;
+        height: 50px;
+      }
+    #food img{
+       width: 550px;
+       height: 400px;
+       margin-left: 240px;
+     }
+     #name{
+       color:rgb(119, 17, 119);
+       font-size: 50px;
+       margin-left: 100px;
+       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img
+        src="https://images.foxtv.com/static.fox5ny.com/www.fox5ny.com/content/uploads/2019/08/764/432/mcdonalds_1495053546175_3325533_ver1.0.png?ve=1&tl=1"
+      />
+    </div>
+    <div id="food">
+      <!-- <form id="form"> -->
+        <div>
+        <select id="form">
+          <option value="">select your food</option>
+          <option id="burger">Burger</option>
+          <option id="coffee">Coffee</option>
+          <option id="tea">Tea</option>
+          <option id="samosa">Samoosa</option>
+          <option id="pizza">Pizza</option>
+        </select>
+        <button onclick="Order()">Select</button>
+        <div id="name"></div>
+      <!-- </form> -->
+    </div>
+      <div id="image"></div>
+    </div>
+  </body>
+</html>
+<script>
+    
+
+function Order(){
+    // event.preventDefualt();
+        let myOrder = document.getElementById("form").value;
+        myOrder.innerText="";
+        console.log("myOrder",myOrder);
+        let status ="open";
+      let food_promise= new Promise(function(resolve,reject){
+        setInterval(function(){
+            if(status=== "open"){
+                resolve(`${myOrder} It's Your Order......Thanks!`);
+                
+              // yourOder(`${myoder}`)
+            }
+            else{
+                reject(`It's time is close "Sorry!"`);
+            }
+        },5000)
+      });
+   
+      let image =document.createElement("img");
+let name= document.createElement("p");
+     food_promise.then(function(res){
+         console.log("res:" ,res);
+         if(`${myOrder}`=="Burger"){
+          image.src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&w=1000&q=80";
+          //  console.log("yess");
+          name.innerText= `${myOrder}`;
+         
+         }
+         if(`${myOrder}`=="Coffee"){
+          image.src="https://www.mikocoffee.com/private-label-and-export/wp-content/uploads/sites/84/2017/07/Miko-bijproducten-1-e1488451185748-746x400-746x400.jpg";
+          //  console.log("yess");
+          name.innerText= `${myOrder}`;
+         }
+         if(`${myOrder}`=="Tea"){
+          image.src="https://upload.wikimedia.org/wikipedia/commons/3/37/Nice_Cup_of_Tea.jpg";
+          //  console.log("yess");
+          name.innerText= `${myOrder}`;
+         }
+         if(`${myOrder}`=="Samoosa"){
+          image.src="https://julesragasdotnet.files.wordpress.com/2015/07/win_20150707_163929.jpg";
+          //  console.log("yess");
+          name.innerText= `${myOrder}`;
+         }
+         if(`${myOrder}`=="Pizza"){
+          image.src="https://b.zmtcdn.com/data/pictures/chains/0/19204550/fe8c80fa162c790264a597b45e7e6580.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*";
+          //  console.log("yess");
+          name.innerText= `${myOrder}`;
+         }
+         
+      document.getElementById("image").append(image)||[];
+      document.getElementById("name").append(name);
+     });
+     food_promise.catch(function(err){
+         console.log("err:", err);
+     });
+    
+    };
+    
+</script>

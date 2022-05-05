@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+
+</head>
+
+<body>
+
+
+
+
+    <div id="nav"></div>
+
+    <div id="dis"></div>
+
+
+</body>
+
+</html>
+
+<script type="module">
+    import navbar from "./components/navparprob.js"
+    //  console.log(navbar)
+
+    let nav = document.getElementById("nav")
+    nav.innerHTML = navbar()
+
+
+    // var url = "https://www.themealdb.com/api/json/v1/1/random.php"
+
+    async function getdata() {
+        let res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+
+        let data = await res.json()
+        var arr = data.meals
+
+        console.log(arr)
+
+        displayitems(arr)
+    }
+
+
+    function displayitems(arr) {
+        arr.map(function (elem) {
+
+
+            var maindiv = document.createElement("div")
+            maindiv.setAttribute("class", "maindiv")
+
+            var div_img = document.createElement("div")
+            var div_name = document.createElement("div")
+            div_name.setAttribute("class", "div_name")
+            var div_desc = document.createElement("div")
+            div_desc.setAttribute("class", "div_desc")
+            var foodimg = document.createElement("img")
+            foodimg.src = elem.strMealThumb
+
+            var name = document.createElement("p")
+            name.textContent = elem.strCategory
+
+
+            var price = document.createElement("p")
+            price.textContent = "Rs." + Math.floor(Math.random() * 500)
+
+
+            var desc = document.createElement("p")
+            desc.textContent = elem.strInstructions
+
+            div_img.append(foodimg)
+            div_name.append(name, price)
+            div_desc.append(desc)
+
+            maindiv.append(div_img, div_name, div_desc)
+
+            var x = document.getElementById("dis")
+            x.append(maindiv)
+
+
+        })
+    }
+
+    getdata()
+
+
+    // getdata("https://www.themealdb.com/api/json/v1/1/random.php")
+
+    document.getElementById("btn").addEventListener("click", myfunction)
+
+
+
+    async function myfunction() {
+        var name = document.getElementById("search").value;
+        console.log("here")
+        console.log(name)
+
+        var res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+
+        var data = await res.json()
+        var arr = data.meals;
+        console.log("arrrrrr",arr)
+        localStorage.setItem("import", JSON.stringify(arr))
+        window.location.href = "search.html"
+
+    }
+
+</script>

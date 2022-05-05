@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        input {
+            font-size: 20px;
+            border: 1px solid black;
+            margin: 25px;
+            padding: 10px;
+        }
+
+        .td1{
+            border: 2px solid black;
+            background-color: coral;
+            margin: 25px;
+            font-size: 35px;
+            width: 60%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form id="form" action="">
+        <input id='name' type="text" placeholder="Enter your Name" name="" id="">
+        <input id="number" type="text" placeholder="Enter your Number">
+        <input id="city" type="text" placeholder="City">
+        <input type="submit" name="" id="" value="Submit">
+    </form>
+
+    <div id="td1" class="td1">student name</div>
+    <div id="td2" class="td1">student Number</div>
+    <div id="td3" class="td1">City</div>
+
+</body>
+
+</html>
+<script>
+    document.querySelector('#form').addEventListener('submit', data);
+
+    var array = JSON.parse(localStorage.getItem('student')) || [];
+
+
+
+
+    function data(event) {
+        event.preventDefault();
+        var N = document.querySelector('#name').value;
+        var num = document.querySelector('#number').value;
+        var city = document.querySelector('#city').value;
+
+        let list = new formFunctin(N, num, city)
+        array.push(list);
+
+        localStorage.setItem('student', JSON.stringify(array));
+
+        document.getElementById('td1').innerHTML = N;
+        document.getElementById('td2').innerHTML = num;
+        document.getElementById('td3').innerHTML = city;
+    }
+
+    function formFunctin(N, num, C) {
+        this.name = N;
+        this.num = num;
+        this.city = C;
+    }
+</script>

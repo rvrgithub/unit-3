@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+  //   function Person(n, a) {
+  //   this.name = n;
+  //   this.age = a;
+  // }
+
+  // function Teacher(s, n, a) {
+  //   Person.call(this, n, a);
+  //   this.name = n;
+  //   this.age = a;
+  //   this.subject = s;
+  // }
+
+  // function Student(s, n, a) {
+  //   Person.apply(this, [n, a]);
+  //   this.name = n;
+  //   this.age = a;
+  //   this.subject = s;
+  // }
+  // function Player(s, n, a) {
+  //   var x = Person.bind(this, n, a);
+  //   x();
+  //   this.sport = s;
+  // }
+
+  // var teacher1 = new Teacher("Physics", "Rahul", 26);
+
+  // var player1 = new Player("Cricket", "Virat", 30);
+
+  // var student1 = new Player("Js", "Tushar", 19);
+ 
+
+  //    console.log("student1:", student1);
+
+  // console.log(player1);
+
+
+
+
+  // mewsPaper
+//   function Newspaper(h){
+//     this.date =new Date()
+//     this.id=Math.round(Math.random() *10)
+//     this.name ="ramayra.publication"
+// this.headLine =h
+//   }
+//   for(let i=0;i<5; i++){
+//     let n =new Newspaper("ramayra in online");
+//     console.log("n",n);
+//   }
+ 
+
+// 2nd question/......
+
+const kitchen ={
+  name:"kitchen",
+  purpose:"cock",
+  order:"Thali",
+  cockFood(x){
+    console.log(`serving ${this.order} ${x}`)
+  }
+}
+const Living_room={
+  name:"Living_room",
+  purpose: "chilll",
+  order: "Maggie",
+}
+ 
+// this type use of call function
+//  kitchen.cockFood.call(Living_room ,"coke");
+
+
+//  this type use of bind function
+let x =  kitchen.cockFood.bind(Living_room ,"coke");
+x();
+</script>

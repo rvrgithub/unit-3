@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <form>
+    <input id="name" type="text" placeholder="enter NAme"/>
+    <input id="num" type="numner" placeholder="number"/>
+    <input id="email" type="email" placeholder="email"/>
+    <input id="pass" type="text" placeholder="enter PAss"/>
+<input type="submit" value="signup"/> 
+  </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", signup);
+    var data=JSON.parse(localStorage.getItem("DataBase"))||[];
+    function signup(event){
+        event.preventDefault();
+    var name =document.querySelector("#name").value;
+    var num =document.querySelector("#num").value;
+    var email= document.querySelector("#email").value;
+    var pass =document.querySelector("#pass").value;
+    console.log(name, num ,email,pass);
+    function signup(){
+        this.name =name
+        this.num =num
+        this.email =email
+        this.pass =pass
+    }
+   let formData = new signup()
+    console.log(formData)
+    data.push(formData);
+    console.log("data",data);
+    localStorage.setItem("DataBase" ,JSON.stringify(data))
+    alert("signup succesfully");
+    }
+</script>
+
+
+
+
+
+
+
+// class Car {
+    //     constructor(n,b){
+    // this.name =n;
+    // this.brand =b;
+    //     }
+    // }
+    
+    // let c1 =new Car("DUSTER", "Renault");
+    // console.log("c1" ,c1);
+    // class Car extends Cat {
+    //     constructor(n,b,o,t){
+    //         super(n,b);
+    //         this.owner =o;
+    //         this.type =t;
+    //     }
+    // }
+    // let c2 =new SUV("DUNTER","Renault", "pat");
+    // console.log("c2:" ,c2);
+    
+    
+    
+    
+    
+    // let food ={
+    //     ingredients : ["butter", "panner"],
+    // cookFood :function(){
+    //     console.log("cook butter paneer");
+    // }
+    // };
+    // function ingredients (a,b){
+    //     return[a,b]
+    // }
+    // // ingredients("butter","paneer")
+    
+    // function cookFood(){
+    //     let ingre =ingredients("butter", "panner");
+    //     return `cooking food ${ingre}`
+    // }
+    
+    
+    // class Satck{
+    //     constructor(){
+    //         this.length =0;
+    //         this.satck =[];
+    //   }
+    //   push(v){
+    // this.satck.push(v);
+    // this.length++;
+    //   }
+    //   pop(){
+    //       this.satck.pop();
+    //       this.length--;
+    //   }
+    // }
+    
+    
+    // let s1 = new Satck();
+    // s1.push("Atomic Habits");
+    // s1.push("Wings Of Fire");
+    // s1.push("Atomic Habits");
+    // s1.push("Wings Of Fire");
+    // s1.push("Atomic Habits");
+    // s1.push("Wings Of Fire");
+    // s1.push("3 mistakes of my life");
+    
+    // s1.pop();
+    // s1.pop();
+    // s1.pop();
+    // s1.pop();
+    // console.log("s1",s1);
+
+
+
+ 

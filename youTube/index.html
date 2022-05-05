@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/11e556d214.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/nav.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="navbar-container"></div>
+
+    <div id="main_container">
+      <div id="home">
+        <div id="box">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEGKH1DG0J5BQbfQ009tWXX9kK4Aa1NFkMrw&usqp=CAU"
+            alt=""
+          />
+          <p>Home</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://t4.ftcdn.net/jpg/04/01/91/45/360_F_401914558_JfbXrz2VIiMRapjZLKOEdsQr9KVUuxQ3.jpg"
+            alt=""
+          />
+          <p>Explore</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/subscriptions-1781681-1518361.png"
+            alt=""
+          />
+          <p>Subsciption</p>
+        </div>
+        <hr />
+        <div id="box">
+          <img
+            src="https://icon-library.com/images/archive-icon-png/archive-icon-png-16.jpg"
+            alt=""
+          />
+          <p>Library</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://www.seekpng.com/png/detail/233-2335072_browser-history-icon-past-png.png"
+            alt=""
+          />
+          <p>History</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXV63Q3aflLm9XKT6hiA9h4C-HJuMQplr-DQ&usqp=CAU"
+            alt=""
+          />
+          <p>Your Vedio</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKEfz-LbUcUJxr6uMFbkxb9lSMs7r9dP_bp3ApEcV6BkD4sU6q6aGALEvg5J4TT4YN9dM&usqp=CAU"
+            alt=""
+          />
+          <p>Watch Now</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://logowik.com/content/uploads/images/940_like_icon.jpg"
+            alt=""
+          />
+          <p>Like Videos</p>
+        </div>
+        <hr />
+        <p>SUBSCRIPTIONS</p>
+        <div id="box">
+          <img
+            src="https://previews.123rf.com/images/vectorshots/vectorshots1211/vectorshots121100267/16104680-smile-ikona-wektor.jpg"
+            alt=""
+          />
+          <p>CookingShooking</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://www.lyricsbogie.com/wp-content/uploads/2020/06/White-Hill-Music-1-218x300.jpg"
+            alt=""
+          />
+          <p>White Hill Music</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBEKTCm_CNK_s3j45A33Gx7QflTQMe0Bx5bQ&usqp=CAU"
+            alt=""
+          />
+          <p>SomeLife</p>
+        </div>
+        <div id="box">
+          <img
+            src="https://iconarchive.com/download/i61935/appicns/simplified-app/appicns-Chrome.ico"
+            alt=""
+          />
+          <p>Crome India</p>
+        </div>
+      </div>
+      <div id="filterFlex">
+        <div id="filter">
+          <div>All</div>
+          <div>Mixes</div>
+          <div>CSS</div>
+          <div>Web Dewlopment</div>
+          <div>Javascript</div>
+          <div>Computer Science</div>
+          <div>Computer</div>
+          <div>T-series</div>
+          <div>Playlist</div>
+          <div>Music</div>
+
+          <div>Shark Tank</div>
+        </div>
+        <div id="searchResult" palceholder="Search Vedio"></div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module" src="index.js"></script>
+<script>
+  // let Api_key = `AIzaSyB20iP7unr8QV66aOIUKvbHHdHIlTIeceA`;
+  let Api_key =`AIzaSyBtQLFfjYJ2psE8v72uFYOvr63AJKprlrQ`
+  const secachVedio = async () => {
+    try {
+      // let userInput = document.getElementById("serchItem").value;
+      let res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?key=${Api_key}&type=video&maxResults=25&part=snippet`
+      );
+      let data = await res.json();
+      // console.log(data);
+      let videoData = data.items;
+      console.log("data", videoData);
+      displayData(videoData);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  secachVedio();
+
+  // for searching data..................................
+  // document.getElementById("btn").addEventListener("click", Button);
+
+  const Button = async () => {
+    try {
+      let userInput = document.getElementById("serchItem").value;
+      console.log(userInput);
+      let res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?key=${Api_key}&q=${userInput}$type=video&maxResults=25&part=snippet`
+      );
+      let data = await res.json();
+      console.log(data);
+      let videoData = data.items;
+      console.log("dattttta", videoData);
+      localStorage.setItem(`Search_data`, JSON.stringify(videoData));
+      window.location.href="search.html"
+      // displayData(videoData);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  Button();
+
+
+
+
+
+
+
+
+  // secachingVedio();
+  // new concept..............................//////
+  let searchResult = document.getElementById("searchResult");
+
+  const displayData = (videosArray) => {
+    searchResult.innerHTML = "";
+    // console.log("videosArray", videosArray);
+    videosArray.forEach(({ snippet, id: { videoId } }) => {
+      // const {id : {videoId:videoId}  } = video ;
+
+      // console.log("videoId",videoId,snippet);
+
+      let video_div = document.createElement("div");
+
+      let title = document.createElement("p");
+      title.innerText = snippet.title;
+      let thum_img = document.createElement("img");
+      thum_img.style.width="100%";
+      thum_img.style.height="60%";
+      thum_img.src = snippet.thumbnails.medium.url;
+      let channelTitle = document.createElement("p");
+      channelTitle.innerHTML = snippet.channelTitle;
+      let sendData = {
+        snippet,
+        videoId,
+      };
+      video_div.onclick = () => {
+        showData(sendData);
+      };
+
+      video_div.append(thum_img, title,channelTitle);
+      searchResult.append(video_div);
+      localStorage.setItem("allData" ,sendData)
+    });
+  };
+
+  const showData = (sendData) => {
+    // console.log("datatatatatata",sendData )
+    localStorage.setItem(`clickData`, JSON.stringify(sendData));
+    window.location.href = "zoomVideo.html";
+  };
+
+</script>

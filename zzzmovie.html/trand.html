@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #101622;
+        }
+        #trand {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 380px);
+  justify-content: space-evenly;
+  padding: 20px;
+}
+#trand > div {
+  margin-left: 55px;
+  margin-bottom: 30px;
+  width: 220px;
+  padding: 10px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #192133;
+  color: white;
+  text-align: center;
+  line-height: 13px;
+}
+#trand > div:hover {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+#trand > div > img {
+  width: 100%;
+  height: 70%;
+  border-top-left-radius: 25px;
+}
+#p{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+}
+    </style>
+    <link rel="stylesheet" href="./styles/nav.css">
+</head>
+<body>
+    <div id="nav_container"></div>
+    <p id="p">Tranding movies</p>
+<div id="trand"></div>
+</body>
+</html>
+<script type="module" src="trand.js"></script>
+<script>
+
+
+
+
+var key3 ="api_key=76b4a2eef82d2cbff3bd8042394a6080"
+var key1="https://api.themoviedb.org/3";
+var key2="/discover/movie?sort_by=popularity.desc&";
+var img_url="https://image.tmdb.org/t/p/w500";
+var url = key1 + key2 +key3;
+ async function getData(){
+    var res = await fetch(url);
+    var data =await res.json();
+    console.log("data",data);
+    return data.results;
+}
+getData();
+async function main_1(){
+    let data = await getData();
+    console.log("new",data);
+    if(data === undefined){
+        return false;
+    }
+    console.log("new2",data);
+ 
+    appendData(data);
+}
+main_1()
+
+let movies_div =document.getElementById("trand");
+function appendData(movies){
+    
+    movies_div.innerHTML=null;
+    movies.forEach(function(el){
+        let div1 =document.createElement("div");
+        let div2 =document.createElement("div");
+        let div3= document.createElement("div");
+        let img =document.createElement("img");
+        let  year =document.createElement("p");
+        let p =document.createElement("P");
+        var rate =document.createElement("p");
+        p.innerText =el.original_title;
+        year.innerHTML =`Title: ${el.release_date}`;
+        img.src=`${img_url+el.poster_path}`;  
+        console.log(img);
+        rate.innerHTML=`Rating: ${el.vote_average}`;
+         div1.append(img,p,year,rate);
+        movies_div.append(div1);
+       });
+}
+</script>

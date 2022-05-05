@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <style>
+      #random {
+        display: flex;
+        /* border: 1px solid black; */
+        width: 60%;
+        margin: 30px auto;
+        /* height: 450px; */
+        grid-gap: 30px;
+        font-size: 20px;
+        line-height: 25px;
+        background-color: white;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+      }
+     .red{
+          color: red;
+          font-size: 40px;
+          line-height: 40px;
+          display: flex;
+          grid-gap: 30px;
+          justify-content: space-between;
+          padding: 0 20px;
+      }
+      #random img {
+        width: 100%;
+        height: 25%;
+      }
+    #mainDiv_3 {
+          display: flex;
+          grid-gap: 70px;
+          padding: 0 200px;
+          justify-content: space-between;
+      }
+      #dec{
+          padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav_bar"></div>
+    <div id="random"></div>
+  </body>
+</html>
+<script type="module">
+  // ................... navbar...............//
+  import navbar from "./components/nav.js";
+  let nav_bar = document.getElementById("nav_bar");
+  nav_bar.innerHTML = navbar();
+
+  async function apiData(url) {
+    try {
+      let res = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/random.php"
+      );
+      let data = await res.json();
+
+      let dataArr = data.meals;
+      console.log("dataArr", dataArr);
+      dataDisplya(dataArr);
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
+  apiData();
+
+  function dataDisplya(dataArr) {
+    // console.log("dataArr",dataArr)
+    dataArr.map(function (element) {
+      console.log("element", element);
+      let main_div = document.createElement("div");
+      main_div.setAttribute("id", "main_flex");
+      let div_I = document.createElement("div");
+      let div_p = document.createElement("div");
+      let div_M = document.createElement("div");
+      let div_D = document.createElement("div");
+      let div_N =document.createElement("div");
+let mainDiv_2 =document.createElement("div");
+let mainDiv_3 =document.createElement("div");
+// let mainDiv_4 =document.createElement("div");
+      let image = document.createElement("img");
+      image.src = element.strMealThumb;
+      let p1 = document.createElement("p");
+      p1.innerHTML = element.strIngredient1;
+      let strMeal =document.createElement("p");
+      strMeal.innerHTML=element.strMeal;
+      let price = document.createElement("p");
+      price.innerHTML = "Rs-" + Math.floor(Math.random() * 700) + "/-";
+      let p2 = document.createElement("p");
+      p2.innerHTML = element.strIngredient2;
+      let p3 = document.createElement("p");
+      p3.innerHTML = element.strIngredient3;
+      let p4 = document.createElement("p");
+      p4.innerHTML = element.strIngredient4;
+      let p5 = document.createElement("p");
+      p5.innerHTML = element.strIngredient5;
+      let p6 = document.createElement("p");
+      p6.innerHTML = element.strIngredient6;
+      let p7 = document.createElement("p");
+      p7.innerHTML = element.strIngredient7;
+      let p8 = document.createElement("p");
+      p8.innerHTML = element.strIngredient8;
+      let p9 = document.createElement("p");
+      p9.innerHTML = element.strIngredient9;
+      let p10 = document.createElement("p");
+      p10.innerHTML = element.strIngredient10;
+      let p11 = document.createElement("p");
+      p11.innerHTML = element.strIngredient11;
+      let p12 = document.createElement("p");
+      p12.innerHTML = element.strIngredient12;
+      let p13 = document.createElement("p");
+      p13.innerHTML = element.strIngredient13;
+
+      let m1 = document.createElement("p");
+      m1.innerHTML = element.strMeasure1;
+      let m2 = document.createElement("p");
+      m2.innerHTML = element.strMeasure2;
+      let m3 = document.createElement("p");
+      m3.innerHTML = element.strMeasure3;
+      let m4 = document.createElement("p");
+      m4.innerHTML = element.strMeasure4;
+      let m5 = document.createElement("p");
+      m5.innerHTML = element.strMeasure5;
+      let m6 = document.createElement("p");
+      m6.innerHTML = element.strMeasure6;
+      let m7 = document.createElement("p");
+      m7.innerHTML = element.strMeasure7;
+      let m8 = document.createElement("p");
+      m8.innerHTML = element.strMeasure8;
+      let m9 = document.createElement("p");
+      m9.innerHTML = element.strMeasure9;
+      let m10 = document.createElement("p");
+      m10.innerHTML = element.strMeasure10;
+      let m11 = document.createElement("p");
+      m11.innerHTML = element.strMeasure8;
+      let m12 = document.createElement("p");
+      m12.innerHTML = element.strMeasure9;
+      let m13 = document.createElement("p");
+      m13.innerHTML = element.strMeasure10;
+let dec=document.createElement("p");
+dec.innerHTML=element.strInstructions;
+
+
+
+
+
+
+
+      main_div.append(mainDiv_2, div_p);
+
+      div_N.append(strMeal,price);
+      div_N.setAttribute("class","red");
+      price.setAttribute("class","red");
+      div_N.setAttribute("id","div_N");
+      dec.setAttribute("id","dec");
+div_I.append(image);
+div_p.append(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13);
+div_M.append(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13)
+
+mainDiv_3.append(div_p,div_M)
+mainDiv_3.setAttribute("id","mainDiv_3")
+mainDiv_2.append(div_N,mainDiv_3,dec)
+ 
+      main_div.append(image,mainDiv_2);
+      document.getElementById("random").append(main_div);
+    });
+  }
+  dataDisplya();
+
+
+
+
+
+
+
+//   document.getElementById("btn").addEventListener("click", myfunction)
+
+
+
+// async function myfunction() {
+//     var name = document.getElementById("search").value;
+//     console.log("name",name)
+
+//     var res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+
+//     var data = await res.json()
+//     var arr = data.meals;
+//     console.log(arr)
+//     localStorage.setItem("import", JSON.stringify(arr))
+//     window.location.href = "search.html"
+
+// }
+
+
+
+
+
+
+
+
+
+</script>

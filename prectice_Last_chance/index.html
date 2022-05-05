@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+        }
+        #sidebar{
+            flex: 4;
+        }
+      
+        #main>div{
+            flex: 6;
+            display: flex;
+            margin: 40px;
+            /* grid-gap:5% 5%; */
+            border: 1px solid black;
+        }
+        #main>div p{
+            border: 1px solid black;
+            width: 30%;
+        }
+        #main img{
+            width: 50%;
+            height: 60%;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+       
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append top images here only-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+import side_bar from "./components/nav.js"
+var sidebar =document.getElementById("sidebar");
+sidebar.innerHTML=side_bar();
+// console.log("side_bar" ,sidebar)
+
+import {newApiCall,appendPicture} from "./scripts/scripts.js"
+
+// console.log("newApiCall",newApiCall)
+// console.log("appendPicture",appendPicture)
+let imag_data = await newApiCall(`https://shrouded-earth-23381.herokuapp.com/api/headlines/india`)
+console.log("imag_data",imag_data)
+let parent =document.getElementById("main");
+// console.log("parent",parent)
+appendPicture(imag_data,parent);
+
+    let search_bar = document.getElementById("search_bar").value;
+    let sarch_data = await newApiCall(`https://shrouded-earth-23381.herokuapp.com/api/search/?q=${search_bar}`);
+console.log("sarch_data",sarch_data);
+
+</script>

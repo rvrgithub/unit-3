@@ -1,0 +1,103 @@
+  body{
+      background-color: #101622;
+    }
+    input {
+margin-left: 65%;
+margin-bottom: 10px;
+      width: 350px;
+      height: 35px;
+      background-color: #101622;
+  border: transparent;
+  border-bottom:.5px solid red;
+  color: white;
+  text-align: center;
+    }
+    input:hover{
+      background-color: #192133;
+      color: #ffaa05;
+      text-align: center;
+    }
+    input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    font-size: 20px;
+  }
+    #movies {
+      height: 500px;
+      width: 356px;
+      margin-top: 10px;
+      border-radius: 10px;
+overflow: scroll;
+background-color: rgb(19, 17, 17);
+    }
+    #movies>div{
+      display: flex;
+      height: 100px;
+      margin: 10px;
+      color: white;
+      background-color: #192133;
+      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    }
+    #movies>div:hover{
+     
+      box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    }
+    #movies>div>div:nth-child(1){
+      width: 50%;
+      height: 100%;
+    }
+    #movies>div>div>img{
+      width:95% ;
+      height: 95%;
+      margin: 5px;
+    }
+    #movies>div>div:nth-child(2){
+      margin-left: 10px;
+      width: 45%;
+      height: 100%;
+    }
+
+    #movies>div>div:nth-child(2) p:nth-child(1){
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+#flex{
+  display: flex;
+}
+#screan{
+  width: 57%;
+  margin: 0 50px;
+  height: 500px;
+  font-size: 20px;
+  color: white;
+ display: flex;
+}
+#screan>div>img{
+width: 100%;
+height: 100%;
+box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+#screan>div:nth-child(1){
+width: 70%;
+height: 100%;
+}
+#screan>div:nth-child(2){
+width: 30%;
+padding-left: 20px;
+height: 100%;
+box-shadow: rgb(129, 130, 131) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+#screan>div:nth-child(2) p:nth-child(1){
+  font-size: 30px;
+}
+
+a{
+    color: #ffaa05;
+    font-size: 25px;
+    /* text-align: center; */
+    border: none;
+    margin-left: 35%;
+}

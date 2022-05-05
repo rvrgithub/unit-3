@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+
+<body>
+    <div id="nav"></div>
+    <h1>Search</h1>
+    <div id="dis"></div>
+
+</body>
+
+</html>
+<script type="module">
+    import navbar from "./components/navparprob.js"
+    let nav = document.getElementById("nav")
+    nav.innerHTML = navbar()
+
+    var arr = JSON.parse(localStorage.getItem("import"))
+    console.log("arr",arr)
+    displayitems(arr)
+
+    function displayitems(arr) {
+        arr.map(function (elem) {
+
+
+            var maindiv = document.createElement("div")
+            maindiv.setAttribute("class", "maindiv")
+
+            var div_img = document.createElement("div")
+            var div_name = document.createElement("div")
+            div_name.setAttribute("class", "div_name")
+            var div_desc = document.createElement("div")
+            div_desc.setAttribute("class", "div_desc")
+            var foodimg = document.createElement("img")
+            foodimg.src = elem.strMealThumb
+
+            var name = document.createElement("p")
+            name.textContent = elem.strCategory
+
+
+            var price = document.createElement("p")
+            price.textContent = "Rs." + Math.floor(Math.random() * 500)
+
+
+            var desc = document.createElement("p")
+            desc.textContent = elem.strInstructions;
+
+            div_img.append(foodimg)
+            div_name.append(name, price)
+            div_desc.append(desc)
+
+            maindiv.append(div_img, div_name, div_desc)
+
+            var x = document.getElementById("dis")
+            x.append(maindiv)
+
+
+        })
+    }
+</script>

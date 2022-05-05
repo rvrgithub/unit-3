@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="name" type="text" placeholder="Enter Your Name"/>
+    <input id="email" type="email" placeholder="Enter Your eamil"/>
+    <input id="pass" type="text" placeholder="Enter Your password"/>
+    <input id="num" type="number" placeholder="Enter Your MObile NO."/>
+    <input type="submit" value="signup">
+    </form>
+</body>
+</html>
+<script>
+    var data =JSON.parse(localStorage.getItem("Database"))||[];
+    document.querySelector("form").addEventListener("submit" , signup);
+    function signup(event){
+event.preventDefault();
+let name =document.querySelector("#name").value;
+let email =document.querySelector("#email").value;
+let mun =document.querySelector("#num").value;
+let pass =document.querySelector("#pass").value;
+// console.log(name, email);
+function signup(){
+    this.name =name
+    this.email=email
+    this.pass =pass
+    this.mun =num
+}
+let formData = new signup();
+data.push(formData);
+ console.log(data);
+
+ localStorage.setItem("DataBase", JSON.stringify(data));
+alert("signup succecfully!");
+    }
+</script>

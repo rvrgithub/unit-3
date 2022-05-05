@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        #main_flex{
+              display: flex;
+              border: 1px solid black;
+            width: 70%;
+            margin:30px auto;
+            height: 450px;
+            grid-gap: 30px;
+            font-size: 20px;
+            line-height: 25px;
+            background-color: white;
+        }
+        #main_flex p:nth-child(1){
+            color: red;
+            font-size: 40px;
+        }
+        #main_flex p:nth-child(2){
+            font-size: 30px;
+            
+        }
+        #main_flex img{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav_bar"> </div>
+    <div id="showData"></div>
+</body>
+</html>
+<script type="module">
+
+      // ................... navbar...............//
+import navbar from "./components/nav.js"
+let nav_bar =document.getElementById("nav_bar");
+nav_bar.innerHTML = navbar();
+
+
+
+
+    var show_data =JSON.parse(localStorage.getItem("showData"));
+    console.log("show_data",show_data);
+    [show_data].map(function(element){
+        let main_div =document.createElement("div");
+        main_div.setAttribute("id","main_flex")
+        let div= document.createElement("div");
+        // div.setAttribute("id","flex")
+        let image =document.createElement("img");
+        let strCategory=document.createElement("p");
+        let price =document.createElement("p");
+let title= document.createElement("p");
+title.innerHTML=element.strCategoryDescription;
+// title.setAttribute("id","title")
+        image.src=element.strCategoryThumb;
+      strCategory.innerHTML=element.strCategory;
+    price.innerHTML="Rs-" + Math.floor(Math.random()*700) + "/-";
+    div.append(strCategory,price,title);
+    main_div.append(image,div);
+    document.getElementById("showData").append(main_div);
+    })
+</script>

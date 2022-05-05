@@ -1,0 +1,73 @@
+#nav{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgb(202, 200, 200);
+    display: flex;
+}
+#nav >img:nth-child(1){
+    width: 25px;
+    height: 50%;
+    margin: 13px 30px;
+
+}
+#nav >img:nth-child(2){
+    width: 100px;
+    height: 75%;
+    margin-top: 7px;
+
+}
+#nav >img:nth-child(4){
+    width: 30px;
+    height: 55%;
+    margin-top: 11px ;
+    margin-left:  70%;
+
+}
+#nav >img:nth-child(5){
+    width: 30px;
+    height: 50%;
+    margin: 12px 30px ;
+border-radius: 20px;
+}
+p{
+    margin: 15px 5px;
+    font-size: 25px;
+
+}
+#container{
+    display: flex;
+    width: 90%;
+    margin: auto ;     
+    margin-top: 50px; 
+    height: 400px;
+    /* border: 1px solid black; */
+  
+}
+#container >div{
+    width: 50%;
+    /* border: 1px solid rgb(10, 228, 75); */
+    height: 70%;
+    
+}
+#container >div:nth-child(2){
+margin-top: 50px;
+/* height: 69%; */
+border: 1px solid rgb(182, 184, 185);
+}
+textarea:focus{
+    outline: none;
+}
+#nput-section ,#output-section{
+width: 50%;
+margin-top: 5%;
+
+}
+#input-text{
+    width: 100%;
+    height: 98%;
+    border: 1px solid rgb(185, 182, 182);
+}
+#ranslate-btn{
+    width: 20%;
+height: 50px;
+}

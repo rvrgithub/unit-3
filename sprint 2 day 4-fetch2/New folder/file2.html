@@ -1,0 +1,220 @@
+
+  
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background:url("https://c.tenor.com/ALqdVz4hII8AAAAC/raining-see-through-window.gif");
+        background-size: cover;
+        /* overflow: hidden; */
+        height: 100px;}
+        
+        .mapouter {
+          position: relative;
+          text-align: right;
+          /* height: 450px;
+          width: 450px; */
+          margin-left: 300px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }</style
+      ><a href="https://www.embedgooglemap.net">wordpress add google map</a
+      ><style>
+        .gmap_canvas {
+          overflow: hidden;
+          background: none !important;
+          height: 100%;
+          width: 100%;
+        }
+        #container{
+          width: 300px;
+          height: 270px;
+          border-radius: 15px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          text-align: center;
+          margin-left: 150px;
+          color: rgb(248, 13, 4);
+          background:url("https://i.pinimg.com/736x/2c/7d/4f/2c7d4f58092ad9a01e648e8a7c450031.jpg");
+        }
+        #flex{
+          display: flex;
+        }
+        #city{
+          width: 300px;
+          height: 30px;
+        margin-left: 250px;
+        margin-bottom: 50px;
+        color: white;
+        background:url("https://c.tenor.com/ALqdVz4hII8AAAAC/raining-see-through-window.gif");
+        }
+       
+        li{
+          margin: 12px;
+        }
+
+
+        #weatherDays {
+/* border: 1px solid black; */
+color: white;
+color: rgb(248, 13, 4);
+display: flex;
+margin: 0 100px; 
+        }
+
+#weatherDays>div{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
+    border-radius: 10px;
+   width: 100px;
+   height: 200px;
+    margin: 20px;
+    text-align: center;
+    background:url("https://i.pinimg.com/736x/2c/7d/4f/2c7d4f58092ad9a01e648e8a7c450031.jpg");
+}
+
+#weatherDays>div>img{
+    width: 80px;
+    height: 80px;
+    margin: 0;
+}
+#weatherDays>div>p:nth-child(1){
+    margin: 10px 0;
+}
+      </style>
+  </head>
+  <body>
+    <input type="text" id="city" />
+    <button onclick="getWetherData()">Search</button>
+    <div id="flex">
+    <div id="container"></div>
+
+    <div class="mapouter">
+      <div class="gmap_canvas">
+        <iframe
+          width="350"
+          height="270"
+          id="gmap_canvas"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe
+        ><a href="https://www.whatismyip-address.com"></a><br />
+      </div>
+    </div>
+  </div>
+
+  <div id="weatherDays"></div>
+  </body>
+</html>
+<script>
+    var weatherDays = document.getElementById("weatherDays");
+  let container = document.getElementById("container");
+  let iframe =document.getElementById("gmap_canvas");
+  let key = "07f6e8c0dff0d9d6260082aee791ec34";
+  async function getWetherData() {
+    try {
+      let city = document.getElementById("city").value;
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
+      );
+      let data = await res.json();
+    //   console.log(data.coord);
+      var lon = data.coord.lon;
+     var lat = data.coord.lat;
+    //  console.log("lonn:::::-",lon,lat);
+      showWtherData(data);
+      weatherData(lon ,lat)
+    } catch (err) {
+      console.log("err:", err);
+    }
+  }
+
+  async function weatherData(lon, lat){
+// console.log("lon:-",lon,lat);
+try{
+    let data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${key}`);
+var res =await data.json();
+console.log("res", res)
+daysData(res);
+}catch(err){
+    console.log("err", err);
+}
+
+}
+weatherData(lon, lat)
+//   getWetherData();
+
+function daysData(data){
+    weatherDays.innerHTML="";
+    console.log("data",data);
+    data.daily.forEach(function(el){
+        console.log("el", data);
+        let div=document.createElement("div");
+let p1 = document.createElement("p");
+let p2 = document.createElement("p");
+let img =document.createElement("img");
+let day =document.createElement("p");
+let night =document.createElement("p");
+p1.innerHTML=`Suneast- ${window.moment(el.sunset*1000).format("HH:mm a")}`;
+p2.innerHTML=` ${window.moment(el.dt *1000).format("ddd")}`;
+p2.style.color="red";
+p2.style.fontWeight="bold";
+p2.style.fontSize="20px";
+img.src=`http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`;
+day.innerHTML =`day:- ${Math.floor(el.feels_like.day-273)} \xB0C `;
+night.innerHTML=`night:- ${Math.floor(el.feels_like.night-273)} \xB0C`;
+div.append(p2,img,day,night)
+weatherDays.append(div);
+    })
+    ((Fahrenheit-32)*5)/9
+}
+    //   
+
+
+
+
+
+
+
+
+    function showWtherData(d) {
+    container.innerHTML = "";
+    console.log("d", d);
+    let div = document.createElement("div");
+    let name = document.createElement("li");
+    name.innerText = `Name - ${d.name}`;
+    let temp = document.createElement("li");
+    temp.innerText = `Temp - ${d.main.temp} 	\xB0 C`;
+    let humidity = document.createElement("li");
+    humidity.innerText = `Humidity - ${d.main.humidity}`;
+    let pressure = document.createElement("li");
+    pressure.innerText = `Pressure - ${d.main.pressure}`;
+    let max_temp =document.createElement("li");
+    max_temp.innerText=`Max-Temp - ${d.main.temp_max} 	\xB0 C`;
+    let min_temp =document.createElement("li");
+min_temp.innerHTML=`Min_Temp - ${d.main.temp_min} \xB0C`;
+    let sunset =document.createElement("li");
+sunset.innerHTML=`Sunset - ${window.moment(d.sys.sunrise).format("HH:mm a")}`;
+    let suneast =document.createElement("li");
+    suneast.innerHTML=`Suneast- ${window.moment(d.sys.sunset).format("HH:mm a")}`;
+    let wind =document.createElement("li");
+iframe.src=`https://maps.google.com/maps?q=${d.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    container.append(name, temp, humidity, pressure,min_temp,max_temp,sunset,suneast);
+    // console.log("container", container);
+    container.append(div);
+  }
+
+
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+
+
+

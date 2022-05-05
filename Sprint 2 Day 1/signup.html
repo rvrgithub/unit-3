@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="index.css">
+</head>
+<body>
+    
+    <div id="container">
+        <div>
+<div id="home">Home</div>
+<div id="login">Login</div>
+<div id="signup">Signup</div>
+</div>
+    </div>
+
+<!-- <div id="signup_div"></div> -->
+
+  <div id="sign_div">
+      <h1>Signup</h1>
+             <form>
+                 <input id="name" type="text" placeholder="Enter Your Name"/>
+             <input id="num" type="number" placeholder="Enter Your Mobile no."/>
+             <input id="email" type="email" placeholder="Enter Your Email Id"/>
+             <input id="pass" type="text" placeholder="Enter Your Password"/>
+             <input type="submit" value="submit">
+             </form>
+         </div>
+</body>
+</html>
+<script >
+
+document.querySelector("form").addEventListener("submit",submitForm);
+// var newArr=[];
+var newArr =JSON.parse(localStorage.getItem("formDataBase"))||[];
+function submitForm(event){
+// event.preventDefault();
+event.preventDefault()
+    var name =document.querySelector("#name").value;
+    var num =document.querySelector("#num").value;
+    var email= document.querySelector("#email").value;
+    var pass =document.querySelector("#pass").value;
+    // console.log(name, num ,email,pass);
+    function submitForm(){
+        this.name =name
+        this.num =num
+        this.email =email
+        this.pass =pass
+    }
+    let formData =new submitForm();
+    console.log(formData);
+    newArr.push(formData);
+    // console.log(newArr);
+    localStorage.setItem("formDataBase" ,JSON.stringify(newArr))
+    alert("signup succesfully");
+window.location.href="index.html"
+}
+
+document.querySelector("#home").addEventListener("click" , function(){
+    window.location.href="index.html";
+});
+document.querySelector("#login").addEventListener("click" , function(){
+    window.location.href="login.html";
+});
+document.querySelector("#signup").addEventListener("click" , function(){
+    window.location.href="signup.html";
+});
+
+
+</script>

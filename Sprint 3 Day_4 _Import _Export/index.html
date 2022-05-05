@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div id="nav_bar"> </div>
+    <div id="food_div"></div>
+</body>
+</html>
+<script type="module">
+   // ................... navbar...............//
+import navbar from "./components/nav.js"
+let nav_bar =document.getElementById("nav_bar");
+nav_bar.innerHTML = navbar();
+
+// let  url ="https://www.themealdb.com/api/json/v1/1/categories.php";
+
+ async function apiData(url){
+     try{
+    let res= await fetch(url);
+    let data =await res.json();
+   
+    let dataArr = data.categories;
+    console.log("dataArr",dataArr);
+    dataDisplya(dataArr);
+}
+catch(err){
+    console.log("err",err)
+}
+}
+apiData("https://www.themealdb.com/api/json/v1/1/categories.php");
+
+
+
+
+function dataDisplya(dataArr){
+   
+    // console.log("dataArr",dataArr)
+    dataArr.map(function (element){
+    
+        console.log("element",element)
+        let main_div =document.createElement("div");
+        let div= document.createElement("div");
+        div.setAttribute("id","flex")
+        let image =document.createElement("img");
+        let strCategory=document.createElement("p");
+        let price =document.createElement("p");
+let title= document.createElement("p");
+title.innerHTML=element.strCategoryDescription;
+title.setAttribute("id","title")
+        image.src=element.strCategoryThumb;
+      strCategory.innerHTML=element.strCategory;
+    price.innerHTML="Rs-" + Math.floor(Math.random()*700)+"/-";
+    div.append(strCategory,price)
+    main_div.append(image,div,title);
+main_div.addEventListener("click",function(){
+    showData(element);
+})
+   document.getElementById("food_div").append(main_div);
+    });
+}
+dataDisplya(element)
+
+function  showData(element){
+    console.log("dataArr",element)
+    localStorage.setItem("showData",JSON.stringify(element))
+    window.location.href="show_data.html"
+}
+
+
+// document.getElementById("btn").addEventListener("click", myfunction)
+
+
+
+// async function myfunction() {
+//     var name = document.getElementById("search").value;
+//     console.log("button")
+//     var res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+
+//     var data = await res.json()
+//     var arr = data.meals;
+//     console.log(arr)
+//     localStorage.setItem("import", JSON.stringify(arr))
+//     window.location.href = "search.html";
+// }
+
+
+
+
+</script>
+
+
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+function myArr(){
+    
+Object.defineProperty(this,"length",{
+writable: true,
+enumerable:false
+})// this property use for hide the length of data in arr///
+
+    for(let i=0;i<arguments.length; i++){
+        // console.log("i:",arguments[i]);
+        this[i]=arguments[i];
+       
+    }
+    this.length=arguments.length;
+}
+
+var arr = new myArr("Raju","Shyam","Babubhaiya","Totla");
+///push function  push-->add*
+myArr.prototype.add=function(x){
+    let index= this.length
+    this[index]=x
+    this.length++
+}
+
+
+myArr.prototype.remove=function(){
+    let index= this.length-1
+    delete this[index]
+    this.length--
+}
+
+// arr.add("Totla");
+arr.remove();
+
+// console.log("arr:", arr);// this formet data like in object formet..we need to in arr
+console.log("arr:",Object.values(arr));
+</script>

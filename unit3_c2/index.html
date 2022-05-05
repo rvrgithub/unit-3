@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <style>
+    #navbar {
+      display: flex;
+      border: 1px solid black;
+      /* justify-content: space-between; */
+      height: 30px;
+      font-size: 25px;
+      padding: 15px;
+      background-color: rgb(163, 204, 204);
+    }
+    #navbar > div {
+      display: flex;
+      /* border: 1px solid black ; */
+    }
+    #navbar > div {
+      /* border: 1px solid black ; */
+      margin-left: 900px;
+      grid-gap: 40px;
+    }
+
+
+    #menu{
+      display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 40px 100px;
+    }
+    img{
+      width: 100%;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <div id="navbar">
+      <div>
+        <div>Menu</div>
+        <div>logIn</div>
+        <div>Signup</div>
+        <div id="cart_Count" > </div>
+        <a href="cart.html">cart </a>
+      </div>
+    
+      <!--Add menu divs here-->
+      <div id="count"></div>
+    </div>
+    <select id="SortValue" onchange="sortPrice()">
+      <option value=""></option>
+      <option value="High">High-Low</option>
+      <option value="Low">Low-heigh</option>
+  </select>
+
+    <div id="menu">
+      <!--Show indian dishes here in grid format-->
+      <!-- add an add to cart button to each dish, give it HTML id as 'addtocart' -->
+      <!-- I Am sorry ...I am not solve any one point .... -->
+      
+    </div>
+  </body>
+</html>
+<script src="index.js"></script>
